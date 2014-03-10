@@ -1,3 +1,3 @@
 module.exports = {
-    'url' : 'mongodb://localhost/get-fired'
+    'url' : process.env.MONGOHQ_URL
 };
