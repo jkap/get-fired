@@ -6,9 +6,10 @@ var express = require('express'),
     flash = require('connect-flash'),
     dotenv = require('dotenv');
 
+dotenv.load();
+
 var configDB = require('./config/database');
 
-dotenv.load();
 
 mongoose.connect(configDB.url);
 
