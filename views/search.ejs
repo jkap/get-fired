@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Fired - A Corporate Adventure</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.1/angular.min.js"></script>
+    <script src="/scripts/search.js"></script>
+    <style>
+        body {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body ng-app="search">
+    <div class="container" ng-controller="SearchCtrl">
+        <div class="jumbotron text-center">
+            <h1>Get Fired! <small>a corporate adventure</small></h1>
+            <form class="form-inline" ng-submit="search()">
+                <div class="form-group">
+                    <label for="searchInput" class="sr-only">Search query</label>
+                    <input type="search" class="form-control" id="searchInput" placeholder="search" ng-model="query">
+                </div>
+                <button class="btn btn-default">Search</button>
+            </form>
+            or
+            <form class="form-inline" ng-submit="user()">
+                <div class="form-group">
+                    <label for="searchInput" class="sr-only">username</label>
+                    <input type="search" class="form-control" id="searchInput" placeholder="username" ng-model="username">
+                </div>
+                <button class="btn btn-default">Show</button>
+            </form>
+        </div>
+        <div class="row" ng-if="errors.length > 0">
+            <div class="alert alert-danger">
+                <h3>Whoops! Something went wrong.</h3>
+                <p ng-repeat="error in errors">{{error.code}}: {{error.message}}</p>
+            </div>
+        </div>
+        <div class="row" ng-if="statuses.length == 0">
+            <h3>nothing found, try again loser</h3>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" ng-repeat="status in statuses">
+                <div class="panel-heading">
+                    <h3><a href="#" ng-click="goToUser(status.user.screen_name)">{{status.user.name}} <small>@{{status.user.screen_name}}</small></a></h3>
+                </div>
+                <div class="panel-body" ng-bind="status.text" ng-mouseup="getSelectedText()" style="white-space: pre;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

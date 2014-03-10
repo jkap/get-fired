@@ -1,0 +1,14 @@
+{
+  "name": "get-fired",
+  "main": "server.js",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "ejs": "^0.8.5",
+    "passport": "^0.2.0",
+    "passport-twitter": "^1.0.2",
+    "express": "^3.5.0",
+    "mongoose": "^3.8.8",
+    "dotenv": "^0.2.5",
+    "request": "^2.34.0"
+  }
+}
